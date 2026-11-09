@@ -1,9 +1,9 @@
 # Veronica Design Workspace
 
-The first Veronica outer-layer prototype: a design home, a right-side assistant panel, and a local brief review workflow. **No agent or CAD engine is connected.**
+Veronica uses the existing native Copilot chat UI for all human-agent interaction. The built-in extension adds only a design home, the Veronica Dark theme, and quieter editor defaults. It registers no custom chat view or conversation store.
 
-Use **Veronica: Open Design Home** and **Veronica: Open Design Assistant** from the command palette. Startup opens both only if no editor tabs were restored. Disable this with `veronica.openHomeOnStartup`.
+Use **Veronica: Open Design Home** and **Veronica: Open Design Assistant** from the command palette. The assistant command delegates to `workbench.action.chat.open` without sending a query. Startup opens both only if no editor tabs were restored. Disable this with `veronica.openHomeOnStartup`.
 
-Briefs are stored locally in extension workspace storage. Approval records intent only; it never modifies geometry, calls a service, or runs a tool. The active-file option attaches a path only. This preview keeps one current brief and clearly labels replacement.
+The native chat retains its provider setup, authentication, history, context attachments, model picker, tool permissions, and change review. Existing providers may require installation and sign-in. No CAD engine or machine-control tools are added by this pass.
 
-See `docs/veronica/ui-scope.md` in the repository for clutter decisions, remaining branding work, launch instructions, and verification.
+See `docs/veronica/ui-scope.md` for clutter decisions, launch instructions, and verification.

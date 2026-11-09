@@ -31,24 +31,6 @@
 				"category": "Veronica"
 			}
 		],
-		"viewsContainers": {
-			"secondarySidebar": [
-				{
-					"id": "veronica.agent",
-					"title": "Veronica",
-					"icon": "media/veronica.svg"
-				}
-			]
-		},
-		"views": {
-			"veronica.agent": [
-				{
-					"type": "webview",
-					"id": "veronica.agentView",
-					"name": "%agentView%"
-				}
-			]
-		},
 		"configuration": {
 			"title": "Veronica",
 			"properties": {

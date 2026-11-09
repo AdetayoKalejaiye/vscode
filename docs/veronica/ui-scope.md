@@ -5,11 +5,11 @@ Veronica is a desktop Code OSS fork for physical engineering. This first pass ch
 ## Available now
 
 - Veronica application name, protocol, data folders, installer identities, and issue link. Existing VS Code installations keep separate data.
-- A theme-aware design surface, with Veronica Dark as the default theme; existing theme preferences are respected.
-- Design home in the central editor, and Design Assistant in the secondary sidebar on the right. The home opens only when no editor tabs are restored. Use **Veronica: Open Design Home** or **Veronica: Open Design Assistant** at any time.
-- A user-authored brief, optionally referencing the active project file's relative path. No file content is read or sent to any service. If there is no active project file, the interface explains how to select one.
-- Review → approve → undo approval, or discard a pending brief. Both surfaces share state, persisted in extension workspace storage across reloads. This preview keeps one current brief, not a version history. Creating a new brief replaces it, as stated beside the composer.
-- **Open as document** opens an untitled Markdown brief; the user chooses whether and where to save it.
+- Veronica Dark as the default theme; existing theme preferences are respected.
+- Design home in the central editor. It opens only when no editor tabs are restored. Use **Veronica: Open Design Home** at any time.
+- The existing native Copilot chat UI on the right, titled Veronica, with design-oriented welcome text. **Veronica: Open Design Assistant** delegates to `workbench.action.chat.open` without passing or submitting a query.
+- Native conversation history, attachments, model selection, tool permissions, and change review remain in their existing implementations. Provider identity, authentication, setup, and safety prompts remain intact. Availability depends on the installed provider and account setup.
+- No custom chat panel, local brief model, approval workflow, or second conversation history. Earlier prototype commits remain in Git history; the current implementation uses native chat.
 - The geometric bracket on the home is an illustration, explicitly labeled. It is not a CAD viewport.
 
 ## Clutter decisions
@@ -24,7 +24,7 @@ Veronica is a desktop Code OSS fork for physical engineering. This first pass ch
 | Extensions marketplace, language tooling | **Removal candidate; still present** | Curate engineering integrations before hiding discovery |
 | Terminal, ports, remote development, developer commands | **Advanced-only candidate; still present** | Retain recovery access; later move into an advanced workspace mode |
 | Problems panel | **Adaptation candidate; still present** | Connect actual geometry/constraint checks before relabeling results |
-| Existing Copilot/chat surfaces | **Replacement candidate; still present** | Settle agent provider and authentication before replacing them |
+| Existing Copilot/chat surfaces | **Retained and adapted as Veronica** | Reuse native chat; attach engineering tools in a later backend pass |
 | Project explorer, search, tabs, command palette | Retained | Add semantic parts/assemblies only with a real document model |
 | Native application icons, About/legal text, remote server prompts | Upstream assets/text remain | Design and validate platform icon assets in a later branding pass; preserve attribution |
 
@@ -32,8 +32,10 @@ Default overrides do not overwrite existing user or workspace preferences. Softw
 
 ## Validation and development
 
-Run the dependency-free behavior tests with `node --test extensions/veronica/test/*.test.cjs`. These exercise state transitions, webview message handling, persistence, and safe rendering. JavaScript sources require no extension compile step; the built-in extension packaging pipeline includes them directly.
+Run the dependency-free routing and rendering tests with `node --test extensions/veronica/test/*.test.cjs`. These verify that startup respects restored tabs, commands open native chat without submitting prompts, and the home renders safely without a duplicate composer. JavaScript sources require no extension compile step; the built-in extension packaging pipeline includes them directly.
 
-For the actual desktop shell, use this repository's pinned Node and pnpm versions, run `pnpm install`, then follow the normal Code OSS development build/run instructions (`pnpm run build-fast`, then `./scripts/code.sh`). The built-in extension is discovered under `extensions/veronica`. Alternatively launch an existing compatible Code OSS 1.146+ build with `--extensionDevelopmentPath=<absolute path>/extensions/veronica`; that previews the extension but does not apply this fork's product branding.
+For the actual desktop shell, use this repository's pinned Node and pnpm versions, run `pnpm install`, then follow the normal Code OSS development build/run instructions (`pnpm run build-fast`, then `./scripts/code.sh`). The built-in extension is discovered under `extensions/veronica`. Alternatively launch an existing compatible Code OSS 1.146+ build with `--extensionDevelopmentPath=<absolute path>/extensions/veronica`; that previews the home/theme but does not apply the fork's product branding or native chat label changes.
 
-Manual desktop checks: launch a fresh profile, verify the Veronica home and right sidebar; create a brief on each surface; approve and undo; reload and verify persistence; reference a project file and verify only its relative path appears; open a brief document; relaunch with restored tabs and verify they are not replaced. Check light, dark, high-contrast, narrow layouts, and keyboard navigation. The independent browser check validates the webview surfaces but does not establish that a complete Electron distribution has been built or tested.
+The native chat welcome test's expected labels are updated in `src/vs/workbench/contrib/chat/test/browser/widget/chatWidget.test.ts`. Run that browser suite using the repository's test runner when dependencies and compiled client output are available. The full Electron distribution has not been built or tested in this pass.
+
+Manual desktop checks: launch a fresh profile and verify the design home and native chat on the right; verify provider setup or sign-in still identifies the actual provider; open an existing conversation and verify history, context attachments, model picker, and review controls remain native; relaunch with restored tabs and verify they are not replaced. Check light, dark, high-contrast, narrow layouts, and keyboard navigation.
