@@ -4,5 +4,6 @@
 	"openHome": "Open Design Home",
 	"focusAgent": "Open Design Assistant",
 	"agentView": "Design Assistant",
-	"openOnStartup": "Open the Veronica design home when no editors have been restored."
+	"openOnStartup": "Open the Veronica design home when no editors have been restored.",
+	"themeName": "Veronica Dark"
 }

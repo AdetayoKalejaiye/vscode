@@ -5,22 +5,59 @@
 	"version": "0.1.0",
 	"publisher": "veronica",
 	"license": "MIT",
-	"engines": { "vscode": "^1.146.0" },
+	"engines": {
+		"vscode": "^1.146.0"
+	},
 	"main": "./extension.cjs",
-	"activationEvents": ["onStartupFinished"],
-	"capabilities": { "virtualWorkspaces": true, "untrustedWorkspaces": { "supported": true } },
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"capabilities": {
+		"virtualWorkspaces": true,
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
 	"contributes": {
 		"commands": [
-			{ "command": "veronica.openHome", "title": "%openHome%", "category": "Veronica" },
-			{ "command": "veronica.focusAgent", "title": "%focusAgent%", "category": "Veronica" }
+			{
+				"command": "veronica.openHome",
+				"title": "%openHome%",
+				"category": "Veronica"
+			},
+			{
+				"command": "veronica.focusAgent",
+				"title": "%focusAgent%",
+				"category": "Veronica"
+			}
 		],
 		"viewsContainers": {
-			"secondarySidebar": [{ "id": "veronica.agent", "title": "Veronica", "icon": "media/veronica.svg" }]
+			"secondarySidebar": [
+				{
+					"id": "veronica.agent",
+					"title": "Veronica",
+					"icon": "media/veronica.svg"
+				}
+			]
 		},
-		"views": { "veronica.agent": [{ "type": "webview", "id": "veronica.agentView", "name": "%agentView%" }] },
+		"views": {
+			"veronica.agent": [
+				{
+					"type": "webview",
+					"id": "veronica.agentView",
+					"name": "%agentView%"
+				}
+			]
+		},
 		"configuration": {
 			"title": "Veronica",
-			"properties": { "veronica.openHomeOnStartup": { "type": "boolean", "default": true, "description": "%openOnStartup%" } }
+			"properties": {
+				"veronica.openHomeOnStartup": {
+					"type": "boolean",
+					"default": true,
+					"description": "%openOnStartup%"
+				}
+			}
 		},
 		"configurationDefaults": {
 			"workbench.startupEditor": "none",
@@ -30,7 +67,17 @@
 			"breadcrumbs.enabled": false,
 			"workbench.statusBar.visible": false,
 			"workbench.tips.enabled": false,
-			"explorer.compactFolders": false
-		}
-	}
+			"explorer.compactFolders": false,
+			"workbench.colorTheme": "Veronica Dark"
+		},
+		"themes": [
+			{
+				"id": "Veronica Dark",
+				"label": "%themeName%",
+				"uiTheme": "vs-dark",
+				"path": "./themes/veronica-dark.json"
+			}
+		]
+	},
+	"l10n": "./l10n"
 }

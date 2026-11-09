@@ -1,0 +1,31 @@
+{
+	"$schema": "vscode://schemas/color-theme",
+	"name": "Veronica Dark",
+	"include": "../../theme-defaults/themes/dark_modern.json",
+	"colors": {
+		"editor.background": "#15181c",
+		"foreground": "#e0e3e8",
+		"descriptionForeground": "#a0a7b2",
+		"sideBar.background": "#1c2026",
+		"activityBar.background": "#15181c",
+		"titleBar.activeBackground": "#15181c",
+		"titleBar.activeForeground": "#e0e3e8",
+		"tab.activeBackground": "#15181c",
+		"tab.inactiveBackground": "#1c2026",
+		"textLink.foreground": "#b6b2ff",
+		"textLink.activeForeground": "#cecbff",
+		"button.background": "#b6b2ff",
+		"button.foreground": "#151321",
+		"button.hoverBackground": "#cecbff",
+		"button.secondaryBackground": "#2d333e",
+		"button.secondaryForeground": "#e0e3e8",
+		"button.secondaryHoverBackground": "#3b4352",
+		"input.background": "#20252e",
+		"input.foreground": "#e0e3e8",
+		"input.placeholderForeground": "#a0a7b2",
+		"widget.border": "#353d48",
+		"focusBorder": "#b6b2ff",
+		"badge.background": "#272d37",
+		"badge.foreground": "#e0e3e8"
+	}
+}

@@ -26,6 +26,7 @@
 		brief = event.data.brief;
 		byId('project').textContent = event.data.project;
 		byId('review').hidden = !brief;
+		byId('replace-note').hidden = !brief;
 		if (!brief) { return; }
 		const approved = brief.status === 'approved';
 		byId('review-title').textContent = label(approved ? 'approved' : 'review');

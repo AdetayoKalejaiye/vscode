@@ -12,7 +12,7 @@ exports.activate = context => {
 	let panel;
 	let brief = context.workspaceState.get('veronica.brief');
 	let pending = Promise.resolve();
-	const t = message => vscode.l10n.t(message);
+	const t = (...args) => vscode.l10n.t(...args);
 	const snapshot = () => ({ brief, project: vscode.workspace.name || t('No project open') });
 	const broadcast = () => {
 		for (const surface of surfaces) {
@@ -33,7 +33,11 @@ exports.activate = context => {
 			case 'createBrief': {
 				if (typeof message.prompt !== 'string' || !message.prompt.trim() || message.prompt.length > 12000) { return; }
 				const file = message.attach === true ? vscode.window.activeTextEditor?.document.uri : undefined;
-				const reference = file && vscode.workspace.getWorkspaceFolder(file) ? vscode.workspace.asRelativePath(file) : undefined;
+				if (message.attach === true && (!file || !vscode.workspace.getWorkspaceFolder(file))) {
+					vscode.window.showInformationMessage(t('Open a project file in the editor before referencing it.'));
+					return;
+				}
+				const reference = file ? vscode.workspace.asRelativePath(file) : undefined;
 				await save(createBrief(message.prompt, reference));
 				break;
 			}
@@ -42,7 +46,7 @@ exports.activate = context => {
 				break;
 			case 'export': {
 				if (!brief || message.id !== brief.id) { return; }
-				const text = ['# Veronica', '', brief.prompt, '', t('Status: {0}').replace('{0}', brief.status), '', brief.reference || '', '', t('Interface preview only. No CAD changes have been made.')].join('\n');
+				const text = ['# Veronica', '', brief.prompt, '', t('Status: {0}', brief.status === 'approved' ? t('Approved') : t('Awaiting review')), '', brief.reference || '', '', t('Interface preview only. No CAD changes have been made.')].join('\n');
 				await vscode.window.showTextDocument(await vscode.workspace.openTextDocument({ content: text, language: 'markdown' }));
 				break;
 			}
