@@ -686,9 +686,9 @@ suite('PromptHoverProvider', () => {
 				'The agent to use when running this prompt.',
 				'',
 				'**Built-in agents:**',
-				'- `agent`: Describe what to build',
-				'- `ask`: Explore and understand your code',
-				'- `edit`: Edit or refactor selected code',
+				'- `agent`: Describe a part, assembly, or design goal',
+				'- `ask`: Explore your design and requirements',
+				'- `edit`: Describe changes to your design',
 				'',
 				'**Custom agents:**',
 				'- `BeastMode`: Custom agent'
