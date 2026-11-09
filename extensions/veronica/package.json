@@ -1,0 +1,65 @@
+{
+	"name": "veronica",
+	"displayName": "%displayName%",
+	"description": "%description%",
+	"version": "0.1.0",
+	"publisher": "veronica",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.146.0"
+	},
+	"main": "./extension.cjs",
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"capabilities": {
+		"virtualWorkspaces": true,
+		"untrustedWorkspaces": {
+			"supported": true
+		}
+	},
+	"contributes": {
+		"commands": [
+			{
+				"command": "veronica.openHome",
+				"title": "%openHome%",
+				"category": "Veronica"
+			},
+			{
+				"command": "veronica.focusAgent",
+				"title": "%focusAgent%",
+				"category": "Veronica"
+			}
+		],
+		"configuration": {
+			"title": "Veronica",
+			"properties": {
+				"veronica.openHomeOnStartup": {
+					"type": "boolean",
+					"default": true,
+					"description": "%openOnStartup%"
+				}
+			}
+		},
+		"configurationDefaults": {
+			"workbench.startupEditor": "none",
+			"editor.minimap.enabled": false,
+			"editor.lineNumbers": "off",
+			"editor.glyphMargin": false,
+			"breadcrumbs.enabled": false,
+			"workbench.statusBar.visible": false,
+			"workbench.tips.enabled": false,
+			"explorer.compactFolders": false,
+			"workbench.colorTheme": "Veronica Dark"
+		},
+		"themes": [
+			{
+				"id": "Veronica Dark",
+				"label": "%themeName%",
+				"uiTheme": "vs-dark",
+				"path": "./themes/veronica-dark.json"
+			}
+		]
+	},
+	"l10n": "./l10n"
+}

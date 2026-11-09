@@ -1,0 +1,37 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+:root { color-scheme: light dark; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 24px; background: var(--vscode-editor-background); color: var(--vscode-foreground); font: var(--vscode-font-size, 13px)/1.6 var(--vscode-font-family, sans-serif); }
+header, .surface-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+header { padding-bottom: 24px; }
+.wordmark { font-size: 16px; font-weight: 600; }
+.badge { color: var(--vscode-descriptionForeground); background: var(--vscode-badge-background); border: 1px solid var(--vscode-contrastBorder, transparent); padding: 2px 8px; border-radius: var(--vscode-cornerRadius-circle, 9999px); font-size: 12px; }
+.home { max-width: 1120px; margin: auto; padding: 32px 40px; }
+.intro { padding: 40px 0 32px; }
+.eyebrow, .step-number { color: var(--vscode-textLink-foreground); font-size: 12px; }
+h1 { font-size: 36px; line-height: 1.2; font-weight: 600; margin: 12px 0 16px; letter-spacing: -0.02em; }
+h2, h3 { font-size: 16px; font-weight: 600; margin: 8px 0; }
+p { margin: 8px 0 16px; }
+.lede { font-size: 16px; color: var(--vscode-descriptionForeground); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+button { font: inherit; font-weight: 600; cursor: pointer; border: 1px solid var(--vscode-button-border, transparent); color: var(--vscode-button-foreground); background: var(--vscode-button-background); padding: 8px 12px; border-radius: var(--vscode-cornerRadius-small, 4px); }
+button:hover { background: var(--vscode-button-hoverBackground); }
+button.secondary { color: var(--vscode-button-secondaryForeground); background: var(--vscode-button-secondaryBackground); }
+button.secondary:hover { background: var(--vscode-button-secondaryHoverBackground); }
+:focus-visible { outline: 2px solid var(--vscode-focusBorder); outline-offset: 2px; }
+.design-surface { border: 1px solid var(--vscode-widget-border, var(--vscode-contrastBorder, transparent)); background: var(--vscode-sideBar-background); border-radius: var(--vscode-cornerRadius-medium, 6px); padding: 16px 20px; }
+.surface-title { font-size: 12px; }
+.blueprint { width: 100%; height: 220px; color: var(--vscode-textLink-foreground); }
+.grid-line { fill: none; stroke: var(--vscode-descriptionForeground); stroke-opacity: .12; }
+.part { fill: none; stroke: currentColor; stroke-width: 1.5; }
+.construction, .dimension { fill: none; stroke: currentColor; stroke-width: 1; stroke-dasharray: 4 4; opacity: .5; }
+.canvas-caption { text-align: center; color: var(--vscode-descriptionForeground); font-size: 12px; margin-bottom: 0; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 32px 0; }
+.steps p, .muted, footer { color: var(--vscode-descriptionForeground); font-size: 12px; }
+.notice { font-size: 12px; color: var(--vscode-descriptionForeground); border-left: 2px solid var(--vscode-textLink-foreground); padding-left: 12px; }
+footer { margin-top: 32px; padding-top: 16px; }
+@media (max-width: 600px) { .home { padding: 20px; } .steps { grid-template-columns: 1fr; gap: 16px; } h1 { font-size: 28px; } .intro { padding-top: 24px; } }
+@media (forced-colors: active) { button, .design-surface { border: 1px solid ButtonText; } .part { stroke: LinkText; } }

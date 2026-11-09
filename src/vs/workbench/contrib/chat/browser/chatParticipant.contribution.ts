@@ -41,7 +41,7 @@ const chatViewIcon = registerIcon('chat-view-icon', Codicon.chatSparkle, localiz
 
 const chatViewContainer: ViewContainer = Registry.as<IViewContainersRegistry>(ViewExtensions.ViewContainersRegistry).registerViewContainer({
 	id: ChatViewContainerId,
-	title: localize2('chat.viewContainer.label', "Chat"),
+	title: localize2('chat.viewContainer.label', "Veronica"),
 	icon: chatViewIcon,
 	ctorDescriptor: new SyncDescriptor(ViewPaneContainer, [ChatViewContainerId, { mergeViewWithContainerWhenSingleView: true }]),
 	storageId: ChatViewContainerId,
@@ -54,13 +54,13 @@ const chatViewDescriptor: IViewDescriptor = {
 	containerIcon: chatViewContainer.icon,
 	containerTitle: chatViewContainer.title.value,
 	singleViewPaneContainerTitle: chatViewContainer.title.value,
-	name: localize2('chat.viewContainer.label', "Chat"),
+	name: localize2('chat.viewContainer.label', "Veronica"),
 	canToggleVisibility: false,
 	canMoveView: true,
 	openCommandActionDescriptor: {
 		id: ChatViewContainerId,
 		title: chatViewContainer.title,
-		mnemonicTitle: localize({ key: 'miToggleChat', comment: ['&& denotes a mnemonic'] }, "&&Chat"),
+		mnemonicTitle: localize({ key: 'miToggleChat', comment: ['&& denotes a mnemonic'] }, "&&Veronica"),
 		keybindings: {
 			primary: KeyMod.CtrlCmd | KeyMod.Alt | KeyCode.KeyI,
 			mac: {

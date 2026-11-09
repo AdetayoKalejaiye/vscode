@@ -1269,13 +1269,13 @@ suite('ChatWidget', () => {
 			restored: container.textContent,
 		}, {
 			contents: [
-				{ title: 'Build with Agent', additionalMessage: 'Generate Agent Instructions' },
-				{ title: 'Build with Agent', additionalMessage: 'Generate Agent Instructions' },
+				{ title: 'Design with Veronica', additionalMessage: 'Generate Agent Instructions' },
+				{ title: 'Design with Veronica', additionalMessage: 'Generate Agent Instructions' },
 				{ title: 'Delegate to @copilot ', additionalMessage: undefined },
-				{ title: 'Build with Agent', additionalMessage: 'Generate Agent Instructions' },
+				{ title: 'Design with Veronica', additionalMessage: 'Generate Agent Instructions' },
 			],
 			instructionsHintCalls: 3,
-			restored: 'Build with Agent',
+			restored: 'Design with Veronica',
 		});
 	});
 
