@@ -7,7 +7,7 @@ Veronica is a desktop Code OSS fork for physical engineering. This first pass ch
 - Veronica application name, protocol, data folders, installer identities, and issue link. Existing VS Code installations keep separate data.
 - Veronica Dark as the default theme; existing theme preferences are respected.
 - Design home in the central editor. It opens only when no editor tabs are restored. Use **Veronica: Open Design Home** at any time.
-- The existing native Copilot chat UI on the right, titled Veronica, with design-oriented welcome text. **Veronica: Open Design Assistant** delegates to `workbench.action.chat.open` without passing or submitting a query.
+- The existing native Copilot chat UI on the right, titled Veronica, with design-oriented welcome text and composer prompts for requirements, design changes, and parts or assemblies. **Veronica: Open Design Assistant** delegates to `workbench.action.chat.open` without passing or submitting a query.
 - Native conversation history, attachments, model selection, tool permissions, and change review remain in their existing implementations. Provider identity, authentication, setup, and safety prompts remain intact. Availability depends on the installed provider and account setup.
 - No custom chat panel, local brief model, approval workflow, or second conversation history. Earlier prototype commits remain in Git history; the current implementation uses native chat.
 - The geometric bracket on the home is an illustration, explicitly labeled. It is not a CAD viewport.
@@ -36,6 +36,14 @@ Run the dependency-free routing and rendering tests with `node --test extensions
 
 For the actual desktop shell, use this repository's pinned Node and pnpm versions, run `pnpm install`, then follow the normal Code OSS development build/run instructions (`pnpm run build-fast`, then `./scripts/code.sh`). The built-in extension is discovered under `extensions/veronica`. Alternatively launch an existing compatible Code OSS 1.146+ build with `--extensionDevelopmentPath=<absolute path>/extensions/veronica`; that previews the home/theme but does not apply the fork's product branding or native chat label changes.
 
-The native chat welcome test's expected labels are updated in `src/vs/workbench/contrib/chat/test/browser/widget/chatWidget.test.ts`. Run that browser suite using the repository's test runner when dependencies and compiled client output are available. The full Electron distribution has not been built or tested in this pass.
+Verified in this checkout:
+
+- `pnpm run build-fast --client-only`: client build succeeds.
+- Targeted lint (`node build/eslint.ts`) passes for the five modified native chat source/test files.
+- `node --test extensions/veronica/test/*.test.cjs`: four passing tests.
+- `PLAYWRIGHT_BROWSERS_PATH=<local browser cache> node test/unit/browser/index.js --browser chromium --runGlob 'vs/workbench/contrib/chat/test/browser/{widget/chatWidget,promptSyntax/languageProviders/promptHovers}.test.js' --reporter dot`: 207 passing, four pending. These are the existing native chat widget and prompt-hover suites, including the updated label expectations.
+- Home webview checks cover dark/light themes, narrow layout, forced colors, command routing, and absence of a duplicate chat composer.
+
+Dependency installation used the pinned pnpm 12.16.0 with lifecycle scripts disabled for the root and build tool dependencies. Native modules and a packaged Electron distribution have not been built or tested. The successful client build is a transpilation build, not a full client type check.
 
 Manual desktop checks: launch a fresh profile and verify the design home and native chat on the right; verify provider setup or sign-in still identifies the actual provider; open an existing conversation and verify history, context attachments, model picker, and review controls remain native; relaunch with restored tabs and verify they are not replaced. Check light, dark, high-contrast, narrow layouts, and keyboard navigation.
