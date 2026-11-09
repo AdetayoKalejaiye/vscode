@@ -1,0 +1,8 @@
+{
+	"displayName": "Veronica Design Workspace",
+	"description": "A focused design home and human-agent review interface for physical engineering.",
+	"openHome": "Open Design Home",
+	"focusAgent": "Open Design Assistant",
+	"agentView": "Design Assistant",
+	"openOnStartup": "Open the Veronica design home when no editors have been restored."
+}
